@@ -1,9 +1,12 @@
 :root {
     --trans: 300%;
     --linkOpac: .7;
+
 }
 
 html, body {
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
     border: none;
@@ -11,12 +14,20 @@ html, body {
     background: black;
     overflow-x: hidden;
 }
+.paneFooter {
+    position: absolute;
+}
 main {
     position: relative;
     width: 100%;
     height: 100vh;
     //border: 1px solid white;
     overflow-x: hidden;
+    transition: all .3s linear;
+}
+
+main.mainAnime, .navBar.mainAnime {
+    transform: translateX(40%);
 }
 
 html {
@@ -38,10 +49,6 @@ body {
     z-index: 5;
     transition: all 1.5s ease-in-out;
     border-radius: 5%;
-}
-
-.overlay {
-    background: rgba(0, 0, 0, .3);
 }
 
 .loginContainerDiv {
@@ -180,19 +187,43 @@ input::placeholder {
 
 .messageCenter {
     position: fixed;
-    display: block;
+    display:;
     bottom: -5%;
     left: -5%;
     width: 100px;
     height: 100px;
     border-radius: 50%;
     background: red;
-    z-index: 2;
-    transition: all .7s ease-out;
+    z-index: 3;
+    transition: all .3s linear;
 }
 
-.messageCenter:hover {
+.messageCenter.hover {
+    position: fixed;
+    transform: scale(7);
+}
+
+.messageCenter.open {
     transform: scale(10);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    opacity: 0;
+    background: #333;
+    transition: all .2s linear;
+    z-index: 2;
+}
+
+.overlay.shader {
+    opacity: .95;
+    pointer-events: none;
+    transform: scale(100);
 }
 
 .scrollButt {
@@ -286,9 +317,14 @@ input::placeholder {
     margin: 0;
     width: 100%;
     height: 15%;
-    z-index: 1;
+    z-index: 10;
     background: transparent;
+    transition: all .3s linear;
     //border: 1px solid white;
+}
+
+nav {
+    position: fixed;
 }
 
 .menu, .about {
@@ -322,7 +358,7 @@ input::placeholder {
 }
 
 .menu, .about, .links {
-    color: rgba(255, 255, 255, var(--linkOpac))
+    color: rgba(255, 255, 255, var(--linkOpac));
 }
 .menu:hover, .about:hover, .links:hover {
     perspective: 100px;
