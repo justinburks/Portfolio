@@ -1,0 +1,336 @@
+:root {
+    --trans: 300%;
+    --linkOpac: .7;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    background: black;
+    overflow-x: hidden;
+}
+main {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    //border: 1px solid white;
+    overflow-x: hidden;
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    overflow: auto;
+}
+
+.loginPageContainer {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, .5) url(https://images.unsplash.com/photo-1470723710355-95304d8aece4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80) no-repeat center center/ cover;
+    z-index: 5;
+    transition: all 1.5s ease-in-out;
+    border-radius: 5%;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, .3);
+}
+
+.loginContainerDiv {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        -webkit-backdrop-filter: blur(8px);
+    transform: translateY(0px);
+    backdrop-filter: blur(8px);
+    transition: backdrop-filter .8s ease;
+    transition: transform .2s ;
+    background: rgba(0, 0, 0, .5);
+    z-index: 5;;
+}
+.login {
+    background: rgba(255, 255, 255, 0);
+
+}
+input {
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+    height: 12vh;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 100;
+    font-style: oblique;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    caret-color: transparent;
+    outline: none;
+}
+[name="password"] {
+    text-indent: 3rem;
+}
+button {
+    opacity: 0;
+}
+input::placeholder {
+    color: #b5d1cc;
+}
+/*
+.container {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    border: 1px red;
+    background: blue;
+}
+
+.container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    font-style: oblique;
+    font-size: 3em;
+    color: #b5d1cc;
+    position: absolute;
+    left: 15%;
+    top: 37%;
+    border: 1px red;
+}
+*/
+[class*="desc"] {
+    position: absolute;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    flex: 1 0 auto;
+    font-size: 1.5rem;
+    //border: 1px solid red;
+    //background: tomato; 
+    
+
+}
+
+.desc1 {
+    top: 10%;
+    left: 48%;
+    transform: translateX(var(--trans));
+    transition: all .7s ease-out;
+}
+.desc2 {
+    top: 40%;
+    left: 53%;
+    transform: translateX(var(--trans));
+    transition: all .8s ease-out;
+}
+.desc3 {
+    top: 70%;
+    left: 58%;
+    transform: translateX(var(--trans));
+    transition: all .9s ease-out;
+    
+}
+.nameTag {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 5%;
+    max-height: 30%;
+    min-height: 30%;
+    padding: 0;
+    width: 100%;
+    font-size: 1em;
+    //border: 1px solid blue;
+    
+}
+
+.gridContainer {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 100;
+    font-style: oblique;
+    color: #b5d1cc;
+    position: absolute;
+    width: 100%;
+    max-height: 100%;
+    top: 0;
+    left: 0;
+    display: contents;
+    //border: 1px solid green;
+}
+
+.messageCenter {
+    position: fixed;
+    display: block;
+    bottom: -5%;
+    left: -5%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: red;
+    z-index: 2;
+    transition: all .7s ease-out;
+}
+
+.messageCenter:hover {
+    transform: scale(10);
+}
+
+.scrollButt {
+    position: fixed;
+    display: block;
+    bottom: 3%;
+    right: 5%;
+    width: 25px;
+    height: 25px;
+    border-left: 5px solid red;
+    border-top: 5px solid red;
+    background: transparent;
+    border-radius: 15%;
+    transform: rotate(-135deg);
+    transition: all .3s linear;
+    z-index: 2;
+}
+
+.scrollButt:hover {
+    transform: scale(1.2) rotate(-135deg);
+}
+
+.nameContain {
+    position: relative;
+    height: 70%;
+    width: 100%;
+    //border: 1px solid blue;
+    //background: violet;
+    transform: translateX(var(--trans));
+    transition: all .7s ease-out;
+}
+
+.name {    
+   position: absolute;
+   text-align: center;
+   white-space: nowrap;
+   font-size: 4rem;
+   height: 15%;
+   width: 30%;
+   left: 10%;
+   bottom: 0;
+   color: white;
+}
+
+[class*="test"] {
+    
+    display: grid;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    padding: 10%;
+    //border: 1px solid white;
+    overflow: hidden;
+}
+
+.textContent {
+    display: flex;
+    color: white;
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+[class*="test"]:nth-of-type(odd) {
+    background: yellow;
+    color: black;
+}
+
+[class*="test"]:nth-of-type(odd) .textContent{
+    color: black;
+}
+[class*="test"]:nth-of-type(even) {
+    background: black;
+    color: white;
+}
+[class*="test"]:nth-of-type(even) .textContent {
+    color: white;
+}
+
+
+.navBar {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 15%;
+    z-index: 1;
+    background: transparent;
+    //border: 1px solid white;
+}
+
+.menu, .about {
+    text-align: center;
+    width: 12%;
+    height: inherit;
+    box-sizing: content-box;
+    padding: 5%;
+    //border: 1px solid red;
+}
+
+
+.navLinks {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+    width: 75%;
+    justify-content: center;
+    transform: translateX(-5%);
+}
+
+.links {
+    //border: 1px solid green;
+    text-align: center;
+    white-space: nowrap;
+    box-sizing: border-box;
+    padding: 10%;
+    margin: 0;
+}
+
+.menu, .about, .links {
+    color: rgba(255, 255, 255, var(--linkOpac))
+}
+.menu:hover, .about:hover, .links:hover {
+    perspective: 100px;
+    box-shadow: yellow;
+    transform: scaleX(1.1) skew(.7deg, .8deg);
+    color: rgb(255, 255, 0);
+}
+
+.test {
+    grid-template-columns: 1, 3;
+}
