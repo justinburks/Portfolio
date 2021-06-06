@@ -1,23 +1,39 @@
+
+
 const form = document.querySelector('#login');
 const body = document.querySelector('body');
 let loginDiv = document.querySelector('.loginContainerDiv');
 let frontPage = document.querySelector('.loginPageContainer')
 let fullName = document.querySelector('.nameContain');
 let header = document.querySelector('.container');
-let lowerHeader = document.querySelector('.nameTag')
+let lowerHeader = document.querySelector('.testNameTag')
 let menuButton = document.querySelector('.menu');
 let main = document.querySelector('main');
 let navBar = document.querySelector('.navBar');
 let messageCenter = document.querySelector('.messageCenter');
 let overlay = document.querySelector('.overlay');
-
+let divs = document.querySelectorAll('[class*="test"]');
 let menuOpen = false;
-
+let linx = document.querySelectorAll('.navBar a');
+let gridContainer = document.querySelector('.gridContainer')
 function pullHeader() {
     document.documentElement.style.setProperty('--trans', '0');
     return menuOpen = false;
 };
 
+let linkedList = {
+        testName: 'white',
+        testNameTag: 'black',
+        test_1: 'black',
+        test_2: 'white',
+        test_3: 'black',
+        test_4: 'white',
+        test_5: 'black',
+}
+
+function toggleWhite() {
+    linx.forEach(link => link.classList.add('deactive'));
+}
 function toggleHeader() {
     if (!menuOpen) {
     document.documentElement.style.setProperty('--trans', '50%');
@@ -62,6 +78,8 @@ function loginShift() {
     frontPage.style.display= "none";
     frontPage.style.height = '75vh';
     frontPage.style.marginTop = '8vh';
+    loginDiv.style.display = "none";
+    frontPage.style.display = "none"
 }
 
 function paint() {
@@ -76,11 +94,38 @@ function toggleIM() {
     overlay.classList.toggle('shader');
 }
 
+function changeNavColor(divs) {
+    let direction = 'down';
+    divs.forEach(div => {
+        if ((div.intersectionRatio >= .93) && (div.isIntersecting === true) && (div.boundingClientRect.y > 30) && (div.boundingClientRect.y < 100) ) {
+           linx.forEach(link => {link.style.color = linkedList[div.target.className]})
+        console.log(div.target.className)   
+        }
+
+        else if (div.isIntersecting === true && div.boundingClientRect.y < -600) {
+                //toggleLink();
+                direction = 'up';
+                console.log(`${div.intersectionRatio.toString().slice(0,4)} ${div.boundingClientRect.y}`);
+                linx.forEach(link => {link.style.color = linkedList[div.target.className]})
+            console.log(div.target.className)
+            }
+            })
+          };
+
 form.addEventListener('submit', blurBackground);
 menuButton.addEventListener('click', toggleMenu);
 messageCenter.addEventListener('click', toggleIM)
 
+let options = {
+    root: main,
+    rootMargin: '0px' ,
+    threshold: [.07,.93],
+}
 
+
+let ob = new IntersectionObserver(changeNavColor, options);
+
+divs.forEach(div => ob.observe(div));
 //navBar Design Updates
     // highjack pointer -- semi opaque(backdropFilter) #333 circle
         // when hovering over navBar letters change text color to red in corresponding area
@@ -109,6 +154,7 @@ messageCenter.addEventListener('click', toggleIM)
         //GUIDE THE EYES
 //perpendicular halfcircle path 
 //icons and descriptions following path
+//change opacity as user scrolls
 
 // ADD AJAX PREVIEW ON SCROLLING NAV LINKS
 
@@ -122,3 +168,17 @@ messageCenter.addEventListener('click', toggleIM)
 
 //ADD PERMISSIONS
 
+
+
+/* create a class
+    idfk = {
+            test : black
+            test2 : white
+            test3 : black
+            test4 : white
+        }
+
+if (intersecting) {
+    linx.forEach(link => link.style.color = idfk['div.target.className'])
+}
+*/
