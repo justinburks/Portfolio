@@ -4,6 +4,10 @@
 
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     height: 100%;
     width: 100%;
@@ -12,19 +16,21 @@ html, body {
     border: none;
     box-sizing: border-box;
     background: black;
-    overflow-x: hidden;
-}
-.paneFooter {
-    position: absolute;
+    overflow: hidden;
+    
 }
 main {
+    box-sizing: border-box;
     position: relative;
     width: 100%;
     height: 100vh;
-    //border: 1px solid white;
-    overflow-x: hidden;
+   
+    overflow: auto;
     transition: all .3s linear;
 }
+
+
+
 
 main.mainAnime, .navBar.mainAnime {
     transform: translateX(40%);
@@ -151,7 +157,7 @@ input::placeholder {
     transition: all .9s ease-out;
     
 }
-.nameTag {
+.testNameTag {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -202,7 +208,6 @@ input::placeholder {
     position: fixed;
     transform: scale(7);
 }
-
 .messageCenter.open {
     transform: scale(10);
 }
@@ -211,19 +216,21 @@ input::placeholder {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
+    height: 100%;
+    width: 100%;
     opacity: 0;
     background: #333;
-    transition: all .2s linear;
+    transform: translateY(-100%);
+    transition: opacity .8s linear,
+                transform .2s ease-in;
     z-index: 2;
+    backdrop-filter: blur(30px);
 }
 
 .overlay.shader {
     opacity: .95;
     pointer-events: none;
-    transform: scale(100);
+    transform: translateY(0);
 }
 
 .scrollButt {
@@ -246,7 +253,7 @@ input::placeholder {
     transform: scale(1.2) rotate(-135deg);
 }
 
-.nameContain {
+.testName {
     position: relative;
     height: 70%;
     width: 100%;
@@ -268,16 +275,6 @@ input::placeholder {
    color: white;
 }
 
-[class*="test"] {
-    
-    display: grid;
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    padding: 10%;
-    //border: 1px solid white;
-    overflow: hidden;
-}
 
 .textContent {
     display: flex;
@@ -289,19 +286,29 @@ input::placeholder {
     overflow: hidden;
 }
 
-[class*="test"]:nth-of-type(odd) {
+[class*="test_"] {
+    display: grid;
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    padding: 10%;
+    border: 3px solid red;
+    overflow: hidden;
+}
+
+[class*="test_"]:nth-of-type(odd) {
     background: yellow;
     color: black;
 }
 
-[class*="test"]:nth-of-type(odd) .textContent{
+[class*="test_"]:nth-of-type(odd) .textContent{
     color: black;
 }
-[class*="test"]:nth-of-type(even) {
-    background: black;
+[class*="test_"]:nth-of-type(even) {
+    background: ;
     color: white;
 }
-[class*="test"]:nth-of-type(even) .textContent {
+[class*="test_"]:nth-of-type(even) .textContent {
     color: white;
 }
 
@@ -317,7 +324,7 @@ input::placeholder {
     margin: 0;
     width: 100%;
     height: 15%;
-    z-index: 10;
+    z-index: 1;
     background: transparent;
     transition: all .3s linear;
     //border: 1px solid white;
@@ -365,8 +372,14 @@ nav {
     box-shadow: yellow;
     transform: scaleX(1.1) skew(.7deg, .8deg);
     color: rgb(255, 255, 0);
+    
 }
 
-.test {
-    grid-template-columns: 1, 3;
+.navBar a.active {
+    color: black;
 }
+
+
+/*
+
+On message center open change arrow to x by cloning a duplicate layer rotating translating then flipping the clone
