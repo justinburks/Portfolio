@@ -31,9 +31,6 @@ let linkedList = {
         test_5: 'black',
 }
 
-function toggleWhite() {
-    linx.forEach(link => link.classList.add('deactive'));
-}
 function toggleHeader() {
     if (!menuOpen) {
     document.documentElement.style.setProperty('--trans', '50%');
